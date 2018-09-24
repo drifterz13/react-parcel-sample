@@ -1,12 +1,12 @@
 import React, { Fragment } from "react";
 import { render } from "react-dom";
-import { Router } from "@reach/router";
 import styled from "react-emotion";
 import Home from "./components/Home";
 import Navbar from "./components/Header";
 import PlusButton from "./components/common/PlusButton";
 import Modal from "./components/Modal";
 import NoteForm from "./components/Form/NoteForm";
+import api from "./api";
 
 const Container = styled("div")`
   height: 100vh;
@@ -14,14 +14,24 @@ const Container = styled("div")`
   padding-top: 6em;
 `;
 
-const initialState = {
-  title: "",
-  content: "",
-  openModal: false
-};
-
 class App extends React.Component {
-  state = initialState;
+  state = {
+    title: "",
+    content: "",
+    notes: [],
+    openModal: false
+  };
+
+  componentDidMount() {
+    this.getAllNotes();
+  }
+
+  getAllNotes = () => {
+    api
+      .notes(process.env.API_URL)
+      .getAll()
+      .then(({ data: notes }) => this.setState({ notes }));
+  };
 
   handleOpenModal = () => {
     const { openModal } = this.state;
@@ -34,18 +44,25 @@ class App extends React.Component {
 
   handleSubmit = event => {
     event.preventDefault();
-    this.setState(initialState);
+    const { title, content, openModal } = this.state;
+    this.setState({ openModal: !openModal }, () => {
+      const body = { title, content };
+      api
+        .notes(process.env.API_URL)
+        .create(body)
+        .then(() => {
+          this.getAllNotes();
+        });
+    });
   };
 
   render() {
-    const { openModal, title, content } = this.state;
+    const { openModal, title, content, notes } = this.state;
     return (
       <Fragment>
         <Navbar />
         <Container>
-          <Router>
-            <Home path="/" />
-          </Router>
+          <Home notes={notes} />
           {openModal ? (
             <Modal>
               <NoteForm

@@ -1,7 +1,6 @@
 import React from "react";
 import styled from "react-emotion";
 import { css } from "emotion";
-import { Link } from "@reach/router";
 
 const Header = styled("header")`
   background-color: #f44336;
@@ -29,7 +28,7 @@ const logo = css`
 
 const Navbar = () => (
   <Header>
-    <Link to="/" className={logo}>
+    <a href="/" className={logo}>
       <h1>Notes</h1>
       <span
         aria-labelledby="logo"
@@ -40,7 +39,7 @@ const Navbar = () => (
       >
         📖
       </span>
-    </Link>
+    </a>
   </Header>
 );
 

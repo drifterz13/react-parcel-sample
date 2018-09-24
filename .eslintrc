@@ -21,6 +21,7 @@
     "react/prop-types": 0,
     "react/destructuring-assignment": 1,
     "import/prefer-default-export": 0,
+    "import/newline-after-import": 0,
     "jsx-a11y/label-has-for": 0,
     "jsx-a11y/label-has-associated-control": 0
   },
