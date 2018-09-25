@@ -6,7 +6,7 @@ import Navbar from "./components/Header";
 import PlusButton from "./components/common/PlusButton";
 import Modal from "./components/Modal";
 import NoteForm from "./components/Form/NoteForm";
-import api from "./api";
+import Main from "./components/Main";
 
 const Container = styled("div")`
   height: 100vh;
@@ -14,71 +14,40 @@ const Container = styled("div")`
   padding-top: 6em;
 `;
 
-class App extends React.Component {
-  state = {
-    title: "",
-    content: "",
-    notes: [],
-    openModal: false
-  };
+const App = () => {
+  return (
+    <Fragment>
+      <Navbar />
+      <Main>
+        {({
+          title,
+          content,
+          notes,
+          openModal,
+          handleChange,
+          handleSubmit,
+          switchModal
+        }) => (
+          <Container>
+            <Home notes={notes} />
+            Hey
+            {openModal ? (
+              <Modal>
+                <NoteForm
+                  title={title}
+                  content={content}
+                  handleChange={handleChange}
+                  handleSubmit={handleSubmit}
+                  closeModal={switchModal}
+                />
+              </Modal>
+            ) : null}
+            <PlusButton openModal={switchModal} />
+          </Container>
+        )}
+      </Main>
+    </Fragment>
+  );
+};
 
-  componentDidMount() {
-    this.getAllNotes();
-  }
-
-  getAllNotes = () => {
-    api
-      .notes(process.env.API_URL)
-      .getAll()
-      .then(({ data: notes }) => this.setState({ notes }));
-  };
-
-  handleOpenModal = () => {
-    const { openModal } = this.state;
-    this.setState({ openModal: !openModal });
-  };
-
-  handleChange = event => {
-    this.setState({ [event.target.name]: event.target.value });
-  };
-
-  handleSubmit = event => {
-    event.preventDefault();
-    const { title, content, openModal } = this.state;
-    this.setState({ openModal: !openModal }, () => {
-      const body = { title, content };
-      api
-        .notes(process.env.API_URL)
-        .create(body)
-        .then(() => {
-          this.getAllNotes();
-        });
-    });
-  };
-
-  render() {
-    const { openModal, title, content, notes } = this.state;
-    return (
-      <Fragment>
-        <Navbar />
-        <Container>
-          <Home notes={notes} />
-          {openModal ? (
-            <Modal>
-              <NoteForm
-                title={title}
-                content={content}
-                handleChange={this.handleChange}
-                handleSubmit={this.handleSubmit}
-                closeModal={this.handleOpenModal}
-              />
-            </Modal>
-          ) : null}
-          <PlusButton openModal={this.handleOpenModal} />
-        </Container>
-      </Fragment>
-    );
-  }
-}
-
-render(<App />, document.getElementById("root"));
+export default App;

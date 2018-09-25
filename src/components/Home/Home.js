@@ -8,12 +8,24 @@ const FlexWrapper = styled("div")`
   align-items: center;
 `;
 
-const Home = ({ notes }) => (
-  <FlexWrapper>
-    {notes.map(note => (
-      <Note key={note._id} content={note.content} title={note.title} />
-    ))}
-  </FlexWrapper>
-);
+const Home = ({ notes }) => {
+  if (!notes) {
+    return <div>loading ..</div>;
+  } else {
+    return (
+      <FlexWrapper data-testid="home">
+        {notes.length > 0 &&
+          notes.map(note => (
+            <Note
+              data-testid="notes"
+              key={note._id}
+              content={note.content}
+              title={note.title}
+            />
+          ))}
+      </FlexWrapper>
+    );
+  }
+};
 
 export default Home;

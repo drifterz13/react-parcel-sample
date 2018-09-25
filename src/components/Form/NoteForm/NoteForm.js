@@ -53,7 +53,7 @@ const NoteForm = ({
   handleSubmit,
   closeModal
 }) => (
-  <ModalContainer>
+  <ModalContainer data-testid="modal-notes">
     <ModalBody>
       <CloseButton onClick={closeModal}>X</CloseButton>
       <h1
