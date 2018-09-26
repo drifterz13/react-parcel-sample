@@ -10,7 +10,7 @@ const __mock = {
   instance: {}
 };
 
-__mock.reset();
+// __mock.reset();
 
 module.exports = {
   __mock,

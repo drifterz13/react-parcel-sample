@@ -1,5 +1,4 @@
 import React, { Fragment } from "react";
-import { render } from "react-dom";
 import styled from "react-emotion";
 import Home from "./components/Home";
 import Navbar from "./components/Header";
@@ -30,7 +29,6 @@ const App = () => {
         }) => (
           <Container>
             <Home notes={notes} />
-            Hey
             {openModal ? (
               <Modal>
                 <NoteForm

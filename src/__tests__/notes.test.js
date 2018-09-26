@@ -1,15 +1,8 @@
 import React from "react";
-import {
-  render,
-  cleanup,
-  fireEvent,
-  renderIntoDocument
-} from "react-testing-library";
+import { render, cleanup, fireEvent } from "react-testing-library";
 import mockAxios from "axios";
 import App from "../App";
 import { init } from "../api";
-import Modal from "../components/Modal";
-import NoteForm from "../components/Form/NoteForm";
 
 beforeEach(() => {
   mockAxios.__mock.reset();
