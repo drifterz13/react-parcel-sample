@@ -1,4 +1,4 @@
-import React from "react";
+import React from 'preact';
 import styled from "react-emotion";
 import { css } from "emotion";
 import { Label, FormInput, CloseButton } from "../../common";

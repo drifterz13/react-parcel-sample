@@ -1,4 +1,4 @@
-import React from "react";
+import React from 'preact';
 import styled from "react-emotion";
 import Note from "../Note";
 

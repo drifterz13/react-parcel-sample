@@ -1,5 +1,6 @@
-import React from "react";
-import { createPortal } from "react-dom";
+import React from "preact";
+import Portal from "preact-portal";
+// import { createPortal } from 'React';
 
 let modalRoot = document.getElementById("modal-root");
 
@@ -21,7 +22,8 @@ class Modal extends React.Component {
     modalRoot.removeChild(this.el);
   }
   render() {
-    return createPortal(this.props.children, this.el);
+    return <Portal into={modalRoot}>{this.props.children}</Portal>;
+    // return createPortal(this.props.children, this.el);
   }
 }
 

@@ -1,4 +1,4 @@
-import React from "react";
+import React from 'preact';
 import { render, cleanup, fireEvent } from "react-testing-library";
 import mockAxios from "axios";
 import App from "../App";

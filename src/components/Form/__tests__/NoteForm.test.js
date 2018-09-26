@@ -1,4 +1,4 @@
-import React from "react";
+import React from 'preact';
 import { render, fireEvent } from "react-testing-library";
 import NoteForm from "../NoteForm";
 

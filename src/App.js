@@ -1,4 +1,4 @@
-import React, { Fragment } from "react";
+import React, { Fragment } from 'preact';
 import styled from "react-emotion";
 import Home from "./components/Home";
 import Navbar from "./components/Header";

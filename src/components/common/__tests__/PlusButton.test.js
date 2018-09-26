@@ -1,4 +1,4 @@
-import React from "react";
+import React from 'preact';
 import { render } from "react-testing-library";
 import PlusButton from "../PlusButton";
 

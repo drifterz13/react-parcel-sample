@@ -1,5 +1,5 @@
-import React from "react";
-import { render, cleanup } from "react-testing-library";
+import React from "preact";
+import { render, cleanup } from "preact-testing-library";
 import Home from "../Home";
 
 test("<Home />", () => {

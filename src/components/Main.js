@@ -1,4 +1,4 @@
-import React from "react";
+import React from "preact";
 import { notes } from "../api";
 
 class Main extends React.Component {
@@ -37,8 +37,8 @@ class Main extends React.Component {
     });
   };
 
-  render() {
-    return this.props.children({
+  render(props) {
+    return props.children[0]({
       ...this.state,
       handleChange: this.handleChange,
       switchModal: this.handleOpenModal,
