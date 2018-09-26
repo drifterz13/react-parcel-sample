@@ -9,7 +9,7 @@ const CustomButton = styled("button")`
   width: 50px;
   background: #f44336;
   color: yellow;
-  border: none;
+  border: 4px solid navajowhite;
   border-radius: 50px;
   margin-bottom: 20px;
   font-size: 26px;

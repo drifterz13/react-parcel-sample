@@ -8,16 +8,23 @@ const Container = styled("div")`
   min-width: 200px;
   background: #f44336;
   color: #fff;
-  box-shadow: 0 0 5px #fff;
+  border-radius: 25px;
+  &:hover {
+    box-shadow: 2px 2px 10px salmon;
+    border: 4px solid salmon;
+  }
   @media (max-width: 421px) {
     height: 150px;
     width: 300px;
   }
+  transition: all 0.4s cubic-bezier(0.175 0.885 0.32 1.275);
 `;
 
 const Title = styled("div")`
   width: 100%;
   box-sizing: border-box;
+  border-top-right-radius: 22px;
+  border-top-left-radius: 22px;
   color: #000;
   background: #fff;
   padding: 15px;

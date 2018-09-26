@@ -4,6 +4,7 @@ import { css } from "emotion";
 
 const Header = styled("header")`
   background-color: #f44336;
+  border-bottom: 4px solid white;
   padding: 0 20px;
   position: fixed;
   width: 100%;
